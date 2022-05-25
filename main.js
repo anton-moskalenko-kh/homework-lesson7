@@ -1,57 +1,60 @@
 // Задание 1
 
-function User(name = prompt("Введите Ваше имя:"), age = prompt("Введите Ваш возраст:")) {
-    this.name = name;
-    this.age = age;
-    this.getUserData = function () {
-        if (this.name === null || this.age === null || this.age < 18) {
-            return "ERROR getUserData";
-         } else {
-            return (`Имя: ${this.name}; Возраст: ${this.age}`)
+function User(name, age) {
+    this.setDataUser = function () {
+        name = prompt("Введите Ваше имя:");
+        age = prompt("Введите Ваш возраст:");
+        if (name === null || age === null || age < 18) {
+            return false;
+        } else {
+            this.name = name;
+            this.age = age
         }
+    }
+    this.getUserData = function () {
+        console.log(`Имя: ${this.name}; Возраст: ${this.age}`)
     }
 }
 
 function createUser() {
-    const user1 = new User()
-    console.log(user1.getUserData());
+    const user1 = new User();
+    user1.setDataUser();
+    user1.getUserData();
 }
 
 // Задание 2
 
-const Owner = function (name = prompt("Введите имя владельца авто:"), phone = prompt("Введите контактный телефон:")) {
-    this.name = name;
-    this.phone = phone;
-}
-
-const Cars = function (model = prompt("Модель авто:") , year = prompt("Год выпуска:") , transmission = prompt("Тип коробки передач:")) {
-    this.model = model;
-    this.year = year;
-    this.transmission = transmission;
-    this.getCarInfo = function () {
-        if (this.model === null || this.year === null || this.transmission === null) {
+function Car(model, year, price) {
+    this.setDataCar = function () {
+        model = prompt("Модель авто:");
+        year = prompt("Год выпуска:");
+        price = prompt("Цена:");
+        if (model === null || year === null || price === null) {
             return false;
         } else {
-            return (`Модель авто: ${this.model}; Год выпуска: ${this.year}; Тип коробки передач: ${this.transmission}`)
+            this.model = model;
+            this.year = year;
+            this.price = price;
         }
     }
-    this.setOwner = new Owner();
+    this.getCarData = function () {
+        console.log(`Модель авто: ${this.model}; Год выпуска: ${this.year}; Цена: ${this.price}`)
+    };
+    this.setUser = function (user) {
+        console.log(user)
+    };
 }
 
 function createCardCar() {
-    const firstCar = new Cars();
-    console.log(firstCar.getCarInfo());
-    console.log(firstCar.setOwner)
-    console.log(firstCar)
+    const currentCar = new Car();
+    currentCar.setDataCar();
+    currentCar.getCarData();
+    const currentUser = new User();
+    currentUser.setDataUser()
+    currentCar.setUser(currentUser);
 }
 
-/*function createCardCar2() {
-    const secondCar = new Cars();
-    console.log(secondCar.getCarInfo());
-    console.log(secondCar.setOwner)
-    console.log(secondCar)
-}
-createCardCar2();*/
+
 
 
 
