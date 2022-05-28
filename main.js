@@ -1,57 +1,55 @@
 // Задание 1
 
-function User(name, age) {
-    this.setDataUser = function () {
-        name = prompt("Введите Ваше имя:");
-        age = prompt("Введите Ваш возраст:");
-        if (name === null || age === null || age < 18) {
-            return false;
-        } else {
+function User() {
+    this.name = undefined; // можно поставить любое другое значение по умолчанию
+    this.age = undefined;
+    this.setDataUser = function (name, age) {
+        if (name !== null && age !== null && age > 18) {
             this.name = name;
-            this.age = age
+            this.age = age;
         }
-    }
-    this.getUserData = function () {
-        console.log(`Имя: ${this.name}; Возраст: ${this.age}`)
+        this.getUserData = function () {
+            console.log(this)
+        }
     }
 }
 
 function createUser() {
     const user1 = new User();
-    user1.setDataUser();
+    user1.setDataUser(prompt('Введите Ваше имя:'), prompt('Введите возраст:'));
+    //user1.setDataUser("Антон","25") - можно указывать конкретные значения
     user1.getUserData();
 }
 
 // Задание 2
 
-function Car(model, year, price) {
-    this.setDataCar = function () {
-        model = prompt("Модель авто:");
-        year = prompt("Год выпуска:");
-        price = prompt("Цена:");
-        if (model === null || year === null || price === null) {
-            return false;
-        } else {
+function Car() {
+    this.model = undefined; // можно поставить любое другое значение по умолчанию
+    this.year = undefined;
+    this.price = undefined;
+    this.owner = undefined;
+    this.setDataCar = function (model, year, price) {
+        if (model !== null && year !== null && price !== null) {
             this.model = model;
             this.year = year;
             this.price = price;
         }
     }
     this.getCarData = function () {
-        console.log(`Модель авто: ${this.model}; Год выпуска: ${this.year}; Цена: ${this.price}`)
+        console.log(this);
     };
-    this.setUser = function (user) {
-        console.log(user)
+    this.setOwner = function (user) {
+        this.owner = user;
     };
 }
 
 function createCardCar() {
-    const currentCar = new Car();
-    currentCar.setDataCar();
-    currentCar.getCarData();
-    const currentUser = new User();
-    currentUser.setDataUser()
-    currentCar.setUser(currentUser);
+    const car1 = new Car();
+    car1.setDataCar(prompt("Модель авто:"), prompt("Год выпуска:"), prompt("Цена:"));
+    const user1 = new User();
+    user1.setDataUser(prompt("Имя владельца:"), prompt("Возраст владельца"));
+    car1.setOwner({name: user1.name, age: user1.age});
+    car1.getCarData();
 }
 
 
