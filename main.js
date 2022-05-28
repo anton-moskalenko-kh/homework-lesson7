@@ -8,7 +8,7 @@ function User() {
             this.name = name;
             this.age = age;
         }
-        this.getUserData = function () {
+        this.getDataUser = function () {
             console.log(this)
         }
     }
@@ -18,7 +18,7 @@ function createUser() {
     const user1 = new User();
     user1.setDataUser(prompt('Введите Ваше имя:'), prompt('Введите возраст:'));
     //user1.setDataUser("Антон","25") - можно указывать конкретные значения
-    user1.getUserData();
+    user1.getDataUser();
 }
 
 // Задание 2
@@ -35,7 +35,7 @@ function Car() {
             this.price = price;
         }
     }
-    this.getCarData = function () {
+    this.getDataCar = function () {
         console.log(this);
     };
     this.setOwner = function (user) {
@@ -49,7 +49,7 @@ function createCardCar() {
     const user1 = new User();
     user1.setDataUser(prompt("Имя владельца:"), prompt("Возраст владельца"));
     car1.setOwner({name: user1.name, age: user1.age});
-    car1.getCarData();
+    car1.getDataCar();
 }
 
 
